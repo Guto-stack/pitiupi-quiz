@@ -51,12 +51,27 @@ O rodapé **Rede** mostra datagramas enviados e recebidos, retransmissões, dupl
 
 **Limitações:** não há criptografia nem autenticação; qualquer peer da sala pode ler as mensagens, e um jogador modificado poderia mentir o tempo de resposta. O apresentador é ponto único: se a janela dele fechar, a sala some para todos após 5 s.
 
-## Build e execução
+## Instalação
+
+Este repositório tem só o plugin. Ele roda no [Pitiupi](https://git.alice.ufsj.edu.br/fls/pitiupi), a aplicação P2P em que é carregado.
+
+**Só usar:** baixe o `pitiupi.quiz.jar` da página de releases. No Pitiupi, use **Configurações → Instalar JAR…** e reinicie. Outra opção é instalar pela rede, com **Plugins → Plugins online…**, a partir de quem já tem o plugin e abriu **Plugins → Compartilhar meus plugins…**.
+
+**Compilar** (Java 17+ e Ant):
 
 ```bash
-./scripts/pitiupi.sh run --plugins chat,quiz   # compila núcleo + plugins e abre
-# ou só o plugin:
-cd plugins/quiz && ant jar                      # requer pitiupi/dist/pitiupi.jar
+git clone https://git.alice.ufsj.edu.br/fls/pitiupi.git
+(cd pitiupi/pitiupi && ant jar)                 # gera o núcleo: pitiupi/pitiupi/dist/pitiupi.jar
+git clone <este repositório> pitiupi/plugins/quiz
+cd pitiupi/plugins/quiz && ant jar              # gera dist/pitiupi.quiz.jar
+```
+
+Se o plugin ficar em outra pasta, aponte para o núcleo: `ant -Dproject.pitiupi=/caminho/do/pitiupi/pitiupi jar`.
+
+**Rodar pelo script do Pitiupi:** acrescente ao `plugins.registry.json` do clone a entrada abaixo e rode `./scripts/pitiupi.sh run --plugins chat,quiz`.
+
+```json
+{ "id": "quiz", "dir": "plugins/quiz", "build": "ant", "jar": "dist/pitiupi.quiz.jar", "menuCategory": "Jogos" }
 ```
 
 Todos precisam da **mesma versão do JAR**, da **mesma porta** no login e da mesma sub-rede.
