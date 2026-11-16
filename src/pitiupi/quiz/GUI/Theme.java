@@ -1,13 +1,8 @@
 package pitiupi.quiz.GUI;
 
-import javax.swing.BorderFactory;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
-import javax.swing.JTextPane;
 import javax.swing.SwingConstants;
-import javax.swing.text.SimpleAttributeSet;
-import javax.swing.text.StyleConstants;
-import javax.swing.text.StyledDocument;
 import java.awt.Color;
 import java.awt.Font;
 
@@ -62,40 +57,6 @@ final class Theme {
     }
 
     /** Texto que quebra linha sozinho, centralizado, sem fundo. */
-    static JTextPane wrapping(int size, boolean bold) {
-        JTextPane pane = new JTextPane();
-        pane.setEditable(false);
-        pane.setFocusable(false);
-        pane.setOpaque(false);
-        pane.setBorder(BorderFactory.createEmptyBorder());
-        pane.setForeground(TEXT);
-        pane.setFont(font(size, bold));
-        StyledDocument doc = pane.getStyledDocument();
-        SimpleAttributeSet center = new SimpleAttributeSet();
-        StyleConstants.setAlignment(center, StyleConstants.ALIGN_CENTER);
-        StyleConstants.setForeground(center, TEXT);
-        StyleConstants.setFontFamily(center, FAMILY);
-        StyleConstants.setFontSize(center, size);
-        StyleConstants.setBold(center, bold);
-        doc.setParagraphAttributes(0, doc.getLength(), center, false);
-        pane.putClientProperty("quiz.style", center);
-        return pane;
-    }
-
-    static void setWrappingText(JTextPane pane, String text) {
-        String value = text == null ? "" : text;
-        if (value.equals(pane.getText())) {
-            return;
-        }
-        pane.setText(value);
-        Object style = pane.getClientProperty("quiz.style");
-        if (style instanceof SimpleAttributeSet attrs) {
-            StyledDocument doc = pane.getStyledDocument();
-            doc.setParagraphAttributes(0, doc.getLength(), attrs, false);
-            doc.setCharacterAttributes(0, doc.getLength(), attrs, false);
-        }
-    }
-
     static String ordinal(int position) {
         return position + "º";
     }

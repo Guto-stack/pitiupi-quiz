@@ -115,6 +115,7 @@ final class HostView extends JPanel {
         scroll.setOpaque(false);
         scroll.getViewport().setOpaque(false);
         scroll.setBorder(BorderFactory.createEmptyBorder());
+        scroll.setViewportBorder(BorderFactory.createEmptyBorder());
         center.add(scroll, BorderLayout.CENTER);
         p.add(center, BorderLayout.CENTER);
 

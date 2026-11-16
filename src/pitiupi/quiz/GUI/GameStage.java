@@ -6,11 +6,8 @@ import pitiupi.quiz.model.RoomState;
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTextPane;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.util.function.IntConsumer;
 
@@ -23,7 +20,7 @@ final class GameStage extends JPanel {
     private final JLabel progress = Theme.label("", 20, true);
     private final JLabel info = Theme.label("", 20, true);
     private final Widgets.CountdownBar bar = new Widgets.CountdownBar();
-    private final JTextPane question = Theme.wrapping(34, true);
+    private final WrapText question = new WrapText(36, true, true);
     private final OptionTile[] tiles = new OptionTile[4];
 
     GameStage(IntConsumer onClick) {
@@ -41,13 +38,8 @@ final class GameStage extends JPanel {
         add(top, BorderLayout.NORTH);
 
         question.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
-        JPanel middle = new JPanel(new GridBagLayout());
-        middle.setOpaque(false);
-        GridBagConstraints c = new GridBagConstraints();
-        c.fill = GridBagConstraints.HORIZONTAL;
-        c.weightx = 1;
-        middle.add(question, c);
-        add(middle, BorderLayout.CENTER);
+        question.setPreferredSize(new Dimension(600, 120));
+        add(question, BorderLayout.CENTER);
 
         JPanel grid = new JPanel(new GridLayout(2, 2, 14, 14));
         grid.setOpaque(false);
@@ -69,7 +61,7 @@ final class GameStage extends JPanel {
      */
     void show(RoomState s, int myChoice, boolean canAnswer, long localDeadline) {
         progress.setText("Pergunta " + (s.getQuestionIndex() + 1) + " de " + s.getQuestionCount());
-        Theme.setWrappingText(question, s.getQuestionText());
+        question.setText(s.getQuestionText());
 
         if (s.getPhase() == Phase.QUESTION) {
             bar.start(localDeadline, s.getSecondsPerQuestion() * 1000L);

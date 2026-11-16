@@ -9,7 +9,6 @@ import javax.swing.BoxLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.JTextPane;
 import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.Dimension;
@@ -50,8 +49,8 @@ final class HomeView extends JPanel {
 
         Widgets.Card create = new Widgets.Card(new BorderLayout(0, 14));
         create.add(Theme.label("Apresentar", 26, true), BorderLayout.NORTH);
-        JTextPane how = Theme.wrapping(17, false);
-        Theme.setWrappingText(how, "Crie uma sala e projete sua tela. A turma entra pelo próprio Pitiupi, "
+        WrapText how = new WrapText(17, false, false);
+        how.setText("Crie uma sala e projete sua tela. A turma entra pelo próprio Pitiupi, "
                 + "você controla as perguntas e o placar aparece ao vivo.\n\n"
                 + "Perguntas sobre Redes de Computadores já vêm embutidas; dá para carregar as suas num .txt.");
         create.add(how, BorderLayout.CENTER);
@@ -68,6 +67,7 @@ final class HomeView extends JPanel {
         scroll.setOpaque(false);
         scroll.getViewport().setOpaque(false);
         scroll.setBorder(BorderFactory.createEmptyBorder());
+        scroll.setViewportBorder(BorderFactory.createEmptyBorder());
         join.add(scroll, BorderLayout.CENTER);
         columns.add(join);
 
@@ -87,8 +87,11 @@ final class HomeView extends JPanel {
         lastRooms = rooms;
         roomList.removeAll();
         if (rooms.isEmpty()) {
-            JTextPane empty = Theme.wrapping(17, false);
-            Theme.setWrappingText(empty, "Procurando salas…\n\nQuando alguém criar uma sala na mesma rede e na mesma porta, ela aparece aqui.");
+            WrapText empty = new WrapText(17, false, false);
+            empty.setPreferredSize(new Dimension(300, 110));
+            empty.setMaximumSize(new Dimension(Integer.MAX_VALUE, 110));
+            empty.setAlignmentX(Component.LEFT_ALIGNMENT);
+            empty.setText("Procurando salas…\n\nQuando alguém criar uma sala na mesma rede e na mesma porta, ela aparece aqui.");
             empty.setForeground(Theme.TEXT_SOFT);
             roomList.add(empty);
         }

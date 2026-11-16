@@ -95,6 +95,7 @@ final class PlayerView extends JPanel {
         scroll.setOpaque(false);
         scroll.getViewport().setOpaque(false);
         scroll.setBorder(BorderFactory.createEmptyBorder());
+        scroll.setViewportBorder(BorderFactory.createEmptyBorder());
         card.add(scroll, BorderLayout.CENTER);
         p.add(card, BorderLayout.CENTER);
         return p;
