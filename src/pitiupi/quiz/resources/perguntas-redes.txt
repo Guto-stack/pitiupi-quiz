@@ -1,0 +1,29 @@
+# Banco de perguntas embutido — Redes de Computadores
+# Formato: enunciado | alternativa 1 | alternativa 2 | alternativa 3 | alternativa 4 | número da correta (1-4)
+# Linhas iniciadas com # são ignoradas. Use o mesmo formato para carregar o seu próprio arquivo.
+
+Qual protocolo de transporte NÃO garante entrega nem ordem? | TCP | UDP | HTTP | ARP | 2
+O Pitiupi descobre quem está online usando... | Servidor central | DNS | Heartbeat por multicast | E-mail | 3
+Qual faixa de endereços IPv4 é reservada para multicast? | 10.0.0.0/8 | 127.0.0.0/8 | 224.0.0.0/4 | 192.168.0.0/16 | 3
+O que o "three-way handshake" estabelece? | Uma conexão TCP | Um endereço IP | Uma rota OSPF | Um certificado TLS | 1
+Em qual camada do modelo TCP/IP o IP trabalha? | Aplicação | Transporte | Rede (Internet) | Enlace | 3
+Qual é a porta padrão do HTTPS? | 80 | 21 | 443 | 22 | 3
+O que significa TTL = 1 num datagrama IP? | Expira em 1 segundo | Não passa de um roteador | Tem 1 byte | Tem prioridade 1 | 2
+Qual protocolo traduz nomes como ufsj.edu.br em endereços IP? | DHCP | DNS | ARP | NAT | 2
+Qual protocolo descobre o endereço MAC a partir do IP na rede local? | ARP | ICMP | RIP | SMTP | 1
+O comando "ping" do sistema operacional usa qual protocolo? | TCP | UDP | ICMP | FTP | 3
+Como o TCP separa mensagens num fluxo de bytes no Pitiupi? | Não separa | Prefixo de 4 bytes com o tamanho | Caractere \n | Um pacote por mensagem | 2
+Quantos bits tem um endereço IPv6? | 32 | 64 | 128 | 256 | 3
+Quem distribui IPs automaticamente para as máquinas da rede? | DNS | DHCP | NAT | BGP | 2
+O que este Quiz faz quando um datagrama UDP se perde? | Nada | Reenvia até receber ACK | Abre uma conexão TCP | Reinicia o programa | 2
+RTT significa... | Round-Trip Time | Real Transfer Time | Route Table Timer | Remote TCP Tunnel | 1
+O algoritmo de Karn ignora amostras de RTT de pacotes... | Grandes | Retransmitidos | Multicast | Criptografados | 2
+Qual destes é um endereço IPv4 privado? | 8.8.8.8 | 200.17.1.1 | 192.168.0.10 | 224.0.0.3 | 3
+O NAT serve principalmente para... | Criptografar pacotes | Vários dispositivos compartilharem um IP público | Resolver nomes | Medir latência | 2
+Qual é a unidade de dados da camada de enlace? | Segmento | Datagrama | Quadro (frame) | Mensagem | 3
+O controle de congestionamento é responsabilidade de qual protocolo? | UDP | IP | TCP | ARP | 3
+Numa rede P2P pura, quem atua como servidor? | Só o roteador | Um servidor central | Cada par (peer) | O provedor | 3
+Qual máscara corresponde a /24? | 255.0.0.0 | 255.255.0.0 | 255.255.255.0 | 255.255.255.255 | 3
+Por que o Pitiupi usa multicast para avisar a sala? | É criptografado | Um envio chega a todos do grupo | É mais confiável que TCP | Não usa portas | 2
+Qual campo do TCP permite remontar os dados na ordem certa? | Checksum | Número de sequência | TTL | Porta de origem | 2
+O endereço 127.0.0.1 representa... | O roteador | O DNS do Google | A própria máquina (loopback) | O grupo multicast | 3
